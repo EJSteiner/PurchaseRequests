@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Purchase Request</title>
+    <meta charset="utf-8" />
+    <link href="Content/main.css" rel="stylesheet" />
+    <link href="Content/smart_wizard.css" rel="stylesheet" />
+    <script src="Scripts/jquery-2.0.0.min.js"></script>
+    <script src="Scripts/jquery.validate.min.js"></script>
+    <script src="Scripts/jquery.smartWizard.js"></script>
+    <script src="Scripts/main.js"></script>
+    <style>
+        content img {
+            display: inline-block;
+            margin: 5em 5em;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            loadNav();
+            // Initialize Smart Wizard
+            $('#wizard').smartWizard();
+        });
+
+    </script>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <img src="" alt="logo" id="logo" />
+            <div id="heading-text">
+                <h1>Pinwheel Industries, LLC</h1>
+                <h2>Purchase Request System</h2>
+            </div>
+            <nav>
+                <ul id="navMenu">
+                    <!-- Navigation menu populated by a script -->
+                </ul>
+            </nav>
+
+        </header>
+
+        <div id="content">
+            <h2>Create New Request</h2>
+            There are three sections to a request. 
+            <ol>
+                <li>Request Data </li>
+                <li>Vendor Selection</li>
+                <li>Item Details</li>
+            </ol>
+            Each section must be completed before starting the next section. 
+            If you don't know which vendors can supply the item(s) you need, 
+            you may wish to check them out on the Catalog Items page.
+
+        </div>
+        <form id="reqForm">
+            <div id="wizard" class="swMain">
+                <ul>
+                    <li><a href="#step-1">
+                        <label class="stepNumber">1</label>
+                        <span class="stepDesc">Step 1<br />
+                            <small>Request Data</small>
+                        </span>
+                    </a></li>
+                    <li><a href="#step-2">
+                        <label class="stepNumber">2</label>
+                        <span class="stepDesc">Step 2<br />
+                            <small>Vendor selection</small>
+                        </span>
+                    </a></li>
+                    <li><a href="#step-3">
+                        <label class="stepNumber">3</label>
+                        <span class="stepDesc">Step 3<br />
+                            <small>Item Details</small>
+                        </span>
+                    </a></li>
+                </ul>
+                <div id="step-1">
+                    <h2 class="StepTitle">Request Data</h2>
+                    <!-- step content -->
+                </div>
+                <div id="step-2">
+                    <h2 class="StepTitle">Vendor selection</h2>
+                    <!-- step content -->
+                </div>
+                <div id="step-3">
+                    <h2 class="StepTitle">Item Details</h2>
+                    <!-- step content -->
+                </div>
+            </div>
+        </form>
+        <footer>
+            copyright Ellen Steiner 2016
+        </footer>
+    </div>
+</body>
+</html>

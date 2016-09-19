@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Approve Requests</title>
+    <meta charset="utf-8" />
+    <link href="Content/main.css" rel="stylesheet" />
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <script src="Scripts/main.js"></script>
+    <script src="Scripts/myObjects.js"></script>
+    <style>
+        table {
+           width:95%;
+       } 
+       th {
+           width:11%;
+       }
+       button {
+           background-color: forestgreen;
+           color: white;
+           font-weight:bold;
+           border: 0;
+           margin-left: 3px;
+           padding-bottom: 2px;
+           padding-top: 2px;
+       }
+       #by {
+           width:20%;
+       }
+       /*#action {
+           width:15%;
+       }*/
+       #desc {
+           width:25%;
+           
+       }
+       .amount {
+           text-align:right;
+       }        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            loadNav();
+            buildTable();
+        });
+
+        function buildTable() {
+            var requests = [];
+            var dateNeeded = new Date("7/31/2106");
+            requests[0] = new Request("1234567891", "John", "Smith", "pending", dateNeeded, "This is a test request", "Big Box", 205.66);
+            var dateNeeded = new Date("7/22/2106");
+            requests[1] = new Request("1234567912", "Sally", "Johnson", "pending", dateNeeded, "Paper for presentation", "Sam's", 52.45);
+            var dateNeeded = new Date("8/02/2106");
+            requests[2] = new Request("1234567912", "Jose", "Sanchez", "pending", dateNeeded, "Banners, shirts, & give-aways for convention.", "Sam's", 52.45);
+
+            var myTable;
+            var newRow;
+            var newCell;
+            var approveBtn; 
+            var rejectBtn;
+            $.each(requests, buildRow);
+
+            function buildRow(i, val) {
+                myTable = $("#requestTable");
+                newRow = $('<tr/>');
+                newCell = $("<td/>").text(this.id);
+                $(newRow).append(newCell);
+                newCell = $("<td/>").text(this.firstName + " " + this.lastName);
+                $(newRow).append(newCell);
+                newCell = $("<td/>").text(this.neededBy.toLocaleDateString());
+                $(newRow).append(newCell);
+                newCell = $("<td/>").text(this.desc);
+                $(newRow).append(newCell);
+                newCell = $("<td/>").text(this.vendor);
+                $(newRow).append(newCell);
+                newCell = $("<td/>").text("$" + this.amount);
+                $(newRow).append(newCell);
+                newCell = $("<td/>");
+                approveBtn = $("<button/>").attr({ name: "btnA" + i }).text("A");
+                $(newCell).append(approveBtn);
+                rejectBtn = $("<button/>").attr({ name: "btnR" + i }).text("R");
+                $(newCell).append(rejectBtn);
+                $(newRow).append(newCell);
+                $(myTable).append(newRow);
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <img src="" alt="logo" id="logo" />
+            <div id="heading-text">
+                <h1>Pinwheel Industries, LLC</h1>
+                <h2>Purchase Request System</h2>
+            </div>
+            <nav>
+                <ul id="navMenu">
+                   <!-- navigation items loaded by script -->
+                </ul>
+            </nav>
+        </header>
+
+        <div id="content">
+            <h2>Approve Requests</h2>
+
+            <p>
+                The table below contains the purchase requests awaiting approval. 
+                To see the purchase request details, click on the request ID.
+            </p>
+
+            <table id="requestTable">
+                <tr>
+                    <th>ID</th>
+                    <th id="by">Submitted By</th>
+                    <th>Needed By</th>
+                    <th id="desc">Description</th>
+                    <th>Vendor</th>
+                    <th>Amount</th>
+                    <th>Action</th>
+                </tr>
+            </table>
+        </div>
+        <footer>
+            copyright Ellen Steiner 2016
+        </footer>
+    </div>
+</body>
+</html>
