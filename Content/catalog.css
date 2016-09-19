@@ -1,0 +1,48 @@
+﻿#content {
+    display: flex;
+}
+
+#top5 {
+    float: left;
+    flex: 1; /*sets width to 1/4 of #content*/
+    width: 15em;
+    background-color: black;
+    color: white;
+}
+
+#catalog {
+    flex: 3; /*sets width to 3/4 of #content*/
+    clear: right;
+}
+
+#ddlVendorNames {
+    float: right;
+}
+
+#itemDiv {
+    clear: right;
+    margin-top: 60px;
+
+}
+
+.itemTable {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+    #itemTable th:nth-child(1) {
+        width: 20%;
+    }
+
+    #itemTable th:nth-child(2) {
+        width: 60%;
+    }
+
+    #itemTable th:nth-child(3) {
+        width: 20%;
+    }
+
+.amount {
+    text-align: right;
+}
