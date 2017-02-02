@@ -1,0 +1,48 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Main.master.cs" Inherits="Main" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Purchase Requests</title>
+    <link href="Content/main.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-3.1.0.js"></script>
+    <script src="Scripts/main.js"></script>
+    
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server" class="container">
+        <header>
+            <img src="images/Pinwheel.jpg"  alt="logo" id="logo" />
+            <div id="heading-text">
+                <h1>Pinwheel Industries, LLC</h1>
+                <h2>Purchase Request System</h2>
+            </div>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="default.aspx">Home</a></li>
+                    <li><a href="createRequest.html">New Request</a></li>
+                    <li><a href="vendors.aspx">Vendors</a></li>
+                    <li><a href="catalog.aspx">Catalog Items</a></li>
+                    <li><a href="reviewRequests.html">Review Requests</a></li>
+                    <li><a href="approveRequests.html">Approve Requests</a></li>
+                    <li>Search</li>
+                </ul>
+                <asp:Literal ID="ltrUserName" runat="server"></asp:Literal>
+                <asp:Button ID="btnLoginOut" runat="server" Text="Login" />
+            </nav>
+            
+        </header>
+        <div id="content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <footer>
+            copyright Ellen Steiner 2016
+        </footer>
+    </form>
+</body>
+</html>

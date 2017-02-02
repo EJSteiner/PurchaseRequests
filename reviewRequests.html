@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Review Requests</title>
+    <meta charset="utf-8" />
+    <link href="Content/main.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-3.1.0.js"></script>
+    <script src="Scripts/main.js"></script>
+    <script src="Scripts/myObjects.js"></script>
+    <style>
+       table {
+           width:95%;
+       } 
+       th {
+           width:11%;
+       }
+       #by {
+           width:20%;
+       }
+       #status {
+           width:15%;
+       }
+       #desc {
+           width:30%;
+           
+       }
+       .amount {
+           text-align:right;
+       }
+       .bigText {
+           text-wrap:normal;
+       }
+
+
+    </style>
+    <script>
+        $(document).ready(function () {
+            loadNav();
+            buildTable();
+        });
+
+       
+        function buildTable() {
+            var requests = [];
+            var dateNeeded = new Date("7/31/2106");
+            requests[0] = new Request ("1234567891", "John", "Smith", "rejected", dateNeeded, "This is a test request", "Big Box", 205.66);
+            var dateNeeded = new Date("7/22/2106");
+            requests[1] = new Request ("1234567912", "Sally", "Johnson", "approved", dateNeeded, "Paper for presentation", "Sam's", 52.45);
+            var dateNeeded = new Date("8/02/2106");
+            requests[2] = new Request("1234567912", "Jose", "Sanchez", "pending", dateNeeded, "Banners, shirts, & give-aways for convention.", "Sam's", 52.45);
+
+            var myTable;
+            var newRow;
+            var newCell;
+            $.each (requests,buildRow);
+            
+            function buildRow(i,val) {
+                myTable = $("#requestTable");
+                newRow = $('<tr/>');
+                newCell = $("<td/>").text(this.id);
+                $(newRow).append(newCell);
+                newCell = $("<td/>").text(this.firstName + " " + this.lastName);
+                $(newRow).append(newCell);
+                newCell = $("<td/>").text(this.neededBy.toLocaleDateString());
+                $(newRow).append(newCell);
+                newCell = $("<td/>").text(this.desc);
+                $(newRow).append(newCell);
+                newCell = $("<td/>").text(this.vendor);
+                $(newRow).append(newCell);
+                newCell = $("<td/>").text("$" + this.amount);
+                $(newRow).append(newCell);
+                newCell = $("<td/>").text(this.status);
+                $(newRow).append(newCell);
+                $(myTable).append(newRow);
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <img src="" alt="logo" id="logo" />
+            <div id="heading-text">
+                <h1>Pinwheel Industries, LLC</h1>
+                <h2>Purchase Request System</h2>
+            </div>
+            <nav>
+                <ul id="navMenu">
+                </ul>
+            </nav>
+        </header>
+
+        <div id="content">
+            <h2>Review Requests</h2>
+
+            <table id="requestTable">
+                <tr>
+                    <th>ID</th>
+                    <th id="by">Submitted By</th>
+                    <th>Needed By</th>
+                    <th id="desc">Description</th>
+                    <th>Vendor</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </table>
+        </div>
+        <footer>
+            copyright Ellen Steiner 2016
+        </footer>
+
+       <!-- <script>buildTable ()</script>-->
+    </div>
+</body>
+</html>
